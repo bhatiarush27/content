@@ -1,0 +1,49 @@
+1. Definition
+    Currying is a functional programming technique where a function with multiple arguments is transformed into a series of functions, 
+    each taking a single argument.
+
+    Instead of taking all arguments at once, the curried function takes the first argument, returns a new function that takes the 
+    next argument, and so on until all arguments are provided. The final function then returns the result.
+
+    In simpler terms, currying breaks down a function that takes multiple parameters into a chain of functions that each take one parameter.
+
+    In a curried function:
+    -> The outer function takes the first argument and returns a new function.
+    -> The returned function takes the next argument and returns another function.
+    -> This process continues until the final function is called with the last argument and produces the result.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. Why is Currying useful in JavaScript?
+    Currying offers several advantages, especially when working with functional programming patterns:
+
+    -> It helps us to create a higher-order function
+    -> It makes a function pure which makes it expose to less errors and side effects.
+    -> It reduces the chances of error in our function by dividing it into multiple smaller functions that can handle one responsibility.
+    -> It is very useful in building modular and reusable code
+    -> It helps us to avoid passing the same variable multiple times
+    -> It makes the code more readable
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Simple example - Calculating the Volume of a cuboid
+
+    *Without currying*
+
+        function calculateVolume(length, breadth, height) {
+            return length * breadth * height;
+        }
+        console.log(calculateVolume(4, 5, 6)); // 120
+
+    *With currying using Closures*
+  
+        function calculateVolume(length) {
+            return function (breadth) {
+                return function (height) {
+                    return length * breadth * height;
+                }
+            }
+        }
+        console.log(calculateVolume(4)(5)(6)); // 120
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
